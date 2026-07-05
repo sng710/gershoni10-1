@@ -1,0 +1,66 @@
+/* Unified yellow-gold option backgrounds for the 3 central boxes + their popups */
+
+.final-black-page .atelier-gallery-card,
+.final-black-page .atelier-texts-card,
+.final-black-page .atelier-farewell-card {
+  background:
+    linear-gradient(180deg, #fff1bf, #ffe39a) !important;
+}
+
+.final-black-page .atelier-gallery-card::before,
+.final-black-page .atelier-texts-card::before,
+.final-black-page .atelier-farewell-card::before {
+  background:
+    linear-gradient(135deg, rgba(255,255,255,.18), transparent 34%),
+    radial-gradient(circle at bottom left, rgba(255,255,255,.18), transparent 34%) !important;
+}
+
+.final-black-page .atelier-gallery-card .atelier-preview,
+.final-black-page .atelier-texts-card .atelier-preview,
+.final-black-page .atelier-farewell-card .atelier-preview {
+  background:
+    linear-gradient(180deg, rgba(255,255,255,.18), rgba(255,255,255,.07)),
+    #ffefb8 !important;
+}
+
+.final-black-page #texts-modal .memory-modal-dialog,
+.final-black-page #farewell-modal .memory-modal-dialog {
+  background: linear-gradient(180deg, #fff1bf, #ffe39a) !important;
+}
+
+/* readability on the yellow background */
+.final-black-page .atelier-gallery-card .atelier-card-title,
+.final-black-page .atelier-texts-card .atelier-card-title,
+.final-black-page .atelier-farewell-card .atelier-card-title,
+.final-black-page .atelier-gallery-card .atelier-index,
+.final-black-page .atelier-texts-card .atelier-index,
+.final-black-page .atelier-farewell-card .atelier-index,
+.final-black-page .atelier-gallery-card .atelier-link,
+.final-black-page .atelier-texts-card .atelier-link,
+.final-black-page .atelier-farewell-card .atelier-link,
+.final-black-page #texts-modal .memory-modal-head h3,
+.final-black-page #farewell-modal .memory-modal-head h3,
+.final-black-page #texts-modal .memory-modal-close,
+.final-black-page #farewell-modal .memory-modal-close,
+.final-black-page #texts-modal .caption-bar strong,
+.final-black-page #texts-modal .caption-bar span,
+.final-black-page #farewell-modal .caption-bar strong,
+.final-black-page #farewell-modal .caption-bar span {
+  color: #2e2414 !important;
+}
+
+.final-black-page .atelier-gallery-card .atelier-card-title,
+.final-black-page .atelier-texts-card .atelier-card-title,
+.final-black-page .atelier-farewell-card .atelier-card-title,
+.final-black-page .atelier-gallery-card .atelier-index,
+.final-black-page .atelier-texts-card .atelier-index,
+.final-black-page .atelier-farewell-card .atelier-index,
+.final-black-page .atelier-gallery-card .atelier-link,
+.final-black-page .atelier-texts-card .atelier-link,
+.final-black-page .atelier-farewell-card .atelier-link,
+.final-black-page #texts-modal .memory-modal-close,
+.final-black-page #farewell-modal .memory-modal-close,
+.final-black-page #texts-modal .caption-bar,
+.final-black-page #farewell-modal .caption-bar {
+  background: rgba(255,255,255,.52) !important;
+}
