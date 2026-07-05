@@ -1,0 +1,426 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>בחירת גרסה — סוניה ואמיר פלוט</title>
+  <style>
+    :root{
+      --bg:#080807;
+      --panel:#14110d;
+      --panel2:#1b1510;
+      --line:rgba(255,197,38,.28);
+      --line2:rgba(255,255,255,.12);
+      --text:#fff5e8;
+      --soft:#e8dac6;
+      --muted:#b9a993;
+      --gold:#ffc526;
+      --gold-light:#ffe08a;
+    }
+
+    *{box-sizing:border-box}
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family:Assistant, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(circle at 18% 0%, rgba(255,197,38,.14), transparent 28rem),
+        radial-gradient(circle at 88% 18%, rgba(255,255,255,.07), transparent 24rem),
+        linear-gradient(180deg, #090806 0%, #12100d 48%, #080807 100%);
+    }
+
+    a{color:inherit}
+
+    .page{
+      width:min(1120px, calc(100% - 32px));
+      margin:0 auto;
+      padding:clamp(42px, 7vw, 86px) 0;
+    }
+
+    .hero{
+      text-align:center;
+      margin-bottom:clamp(28px, 5vw, 48px);
+    }
+
+    .eyebrow{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:.65rem 1.15rem;
+      color:var(--gold-light);
+      background:rgba(255,255,255,.035);
+      font-weight:800;
+      margin-bottom:1rem;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(2.2rem, 5.2vw, 4.9rem);
+      line-height:1.05;
+      font-weight:700;
+      letter-spacing:-.035em;
+    }
+
+    .lead{
+      max-width:740px;
+      margin:1rem auto 0;
+      color:var(--soft);
+      font-size:clamp(1rem, 1.5vw, 1.18rem);
+      line-height:1.8;
+    }
+
+    .options{
+      display:grid;
+      grid-template-columns:repeat(2, minmax(0, 1fr));
+      gap:clamp(18px, 3vw, 28px);
+    }
+
+    .card{
+      position:relative;
+      min-height:320px;
+      display:flex;
+      flex-direction:column;
+      justify-content:space-between;
+      gap:1.4rem;
+      padding:clamp(22px, 3vw, 34px);
+      border:1px solid var(--line);
+      border-radius:30px;
+      overflow:hidden;
+      text-decoration:none;
+      background:
+        radial-gradient(circle at 50% -20%, rgba(255,197,38,.18), transparent 42%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.018)),
+        var(--panel);
+      box-shadow:
+        0 24px 70px rgba(0,0,0,.36),
+        inset 0 1px 0 rgba(255,255,255,.05);
+      transition:transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .card:hover{
+      transform:translateY(-5px);
+      border-color:rgba(255,197,38,.72);
+      box-shadow:
+        0 34px 90px rgba(0,0,0,.46),
+        inset 0 1px 0 rgba(255,255,255,.07);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      inset:0;
+      background:
+        linear-gradient(135deg, rgba(255,255,255,.05), transparent 34%),
+        radial-gradient(circle at bottom left, rgba(255,197,38,.08), transparent 34%);
+      pointer-events:none;
+    }
+
+    .card > *{position:relative; z-index:1}
+
+    .num{
+      width:52px;
+      height:52px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      border:1px solid var(--line);
+      color:var(--gold-light);
+      font-weight:900;
+      letter-spacing:.08em;
+      background:rgba(255,255,255,.035);
+    }
+
+    .title{
+      margin:0;
+      font-size:clamp(1.7rem, 3vw, 2.55rem);
+      line-height:1.15;
+      font-weight:800;
+    }
+
+    .desc{
+      color:var(--soft);
+      line-height:1.85;
+      margin:.85rem 0 0;
+      font-size:1.04rem;
+    }
+
+    .cta{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      align-self:flex-start;
+      min-height:48px;
+      border:1px solid var(--line);
+      border-radius:999px;
+      padding:.8rem 1.25rem;
+      color:#241800;
+      background:var(--gold);
+      font-weight:900;
+      text-decoration:none;
+      box-shadow:0 12px 28px rgba(0,0,0,.22);
+    }
+
+    .card.light .preview{
+      background:linear-gradient(180deg, #fff1bf, #ffe39a);
+    }
+
+    .card.mid .preview{
+      background:linear-gradient(180deg, #ffe7a0, #ffd86a);
+    }
+
+    .preview{
+      height:74px;
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.22);
+      box-shadow:inset 0 1px 0 rgba(255,255,255,.35);
+      margin-top:1.1rem;
+    }
+
+    .note{
+      margin-top:28px;
+      border:1px solid var(--line2);
+      border-radius:20px;
+      padding:16px 18px;
+      color:var(--muted);
+      background:rgba(255,255,255,.025);
+      line-height:1.75;
+      text-align:center;
+    }
+
+    @media (max-width: 760px){
+      .options{grid-template-columns:1fr}
+      .card{min-height:280px}
+      .cta{align-self:stretch}
+    }
+  
+    .gershoni-header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      background:rgba(255,255,255,.96);
+      border-bottom:1px solid rgba(30,30,30,.08);
+      box-shadow:0 10px 30px rgba(0,0,0,.08);
+      backdrop-filter:blur(14px);
+      direction:rtl;
+    }
+
+    .gershoni-header-inner{
+      width:min(1240px, calc(100% - 32px));
+      margin:0 auto;
+      min-height:86px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:24px;
+    }
+
+    .gershoni-brand{
+      display:flex;
+      align-items:center;
+      gap:14px;
+      color:#1a1a1a;
+      text-decoration:none;
+      min-width:max-content;
+    }
+
+    .gershoni-logo-mark{
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      display:grid;
+      place-items:center;
+      background:
+        radial-gradient(circle at 50% 44%, #f7f2e8 0 28%, transparent 29%),
+        conic-gradient(from 0deg, #91c94d, #c9d947, #91c94d, #75b74a, #91c94d);
+      box-shadow:inset 0 0 0 7px rgba(255,255,255,.78), 0 6px 18px rgba(0,0,0,.08);
+      flex:0 0 auto;
+    }
+
+    .gershoni-brand-text{
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+      line-height:1.1;
+    }
+
+    .gershoni-brand-title{
+      font-size:1.22rem;
+      font-weight:900;
+      color:#1f1f1f;
+    }
+
+    .gershoni-brand-sub{
+      font-size:.82rem;
+      color:#8c735c;
+      font-weight:700;
+    }
+
+    .gershoni-nav{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      gap:clamp(14px, 2vw, 26px);
+      flex-wrap:wrap;
+      font-weight:800;
+      color:#222;
+    }
+
+    .gershoni-nav a{
+      color:#222;
+      text-decoration:none;
+      font-size:.98rem;
+      position:relative;
+      padding:8px 0;
+      white-space:nowrap;
+    }
+
+    .gershoni-nav a::after{
+      content:"";
+      position:absolute;
+      inset-inline:0;
+      bottom:1px;
+      height:2px;
+      background:#ffc526;
+      transform:scaleX(0);
+      transform-origin:center;
+      transition:transform .2s ease;
+    }
+
+    .gershoni-nav a:hover::after{
+      transform:scaleX(1);
+    }
+
+    .gershoni-donate{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      min-height:44px;
+      padding:10px 20px;
+      border-radius:999px;
+      background:#ffc526;
+      color:#17120a;
+      font-weight:900;
+      text-decoration:none;
+      box-shadow:0 8px 22px rgba(255,197,38,.25);
+      min-width:max-content;
+    }
+
+    @media (max-width: 980px){
+      .gershoni-header-inner{
+        min-height:auto;
+        padding-block:14px;
+        align-items:flex-start;
+        flex-direction:column;
+      }
+
+      .gershoni-top-row{
+        width:100%;
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        gap:16px;
+      }
+
+      .gershoni-nav{
+        width:100%;
+        justify-content:flex-start;
+        overflow:auto;
+        padding-bottom:4px;
+        gap:18px;
+      }
+
+      .gershoni-donate{
+        align-self:flex-start;
+      }
+    }
+
+    @media (min-width: 981px){
+      .gershoni-top-row{
+        display:contents;
+      }
+    }
+
+    @media (max-width: 560px){
+      .gershoni-logo-mark{
+        width:50px;
+        height:50px;
+      }
+      .gershoni-brand-title{
+        font-size:1.05rem;
+      }
+      .gershoni-brand-sub{
+        font-size:.74rem;
+      }
+      .gershoni-nav a{
+        font-size:.92rem;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  <header class="gershoni-header" aria-label="ניווט קרן גרשוני">
+    <div class="gershoni-header-inner">
+      <div class="gershoni-top-row">
+        <a class="gershoni-brand" href="https://gershoni.org.il/" aria-label="קרן גרשוני">
+          <span class="gershoni-logo-mark" aria-hidden="true"></span>
+          <span class="gershoni-brand-text">
+            <span class="gershoni-brand-title">קרן גרשוני</span>
+            <span class="gershoni-brand-sub">קרן מילגות שער הנגב ע״ש צבי גרשוני ז״ל</span>
+          </span>
+        </a>
+        <a class="gershoni-donate" href="https://gershoni.org.il/תימכו-בנו/">תימכו בנו</a>
+      </div>
+
+      <nav class="gershoni-nav" aria-label="תפריט ראשי">
+        <a href="https://gershoni.org.il/">ראשי</a>
+        <a href="https://gershoni.org.il/category/תוצרים-ופרסומים/">עשייה ויצירה</a>
+        <a href="https://gershoni.org.il/חברי-הקרן/">חברי הקרן</a>
+        <a href="https://gershoni.org.il/השותפים-שלנו/">השותפים שלנו</a>
+        <a href="https://gershoni.org.il/category/דפי-מורשת/">מורשת</a>
+        <a href="https://gershoni.org.il/הגשת-בקשה/">הגשת בקשה</a>
+        <a href="https://gershoni.org.il/צרו-קשר/">צרו קשר</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="page">
+    <section class="hero">
+      <div class="eyebrow">בחירת גרסה</div>
+      <h1>סוניה ואמיר פלוט</h1>
+      <p class="lead">בחרי את אחת משתי הגרסאות שהעלית לריפוזיטורי. כל כרטיס מוביל לעמוד הבית של אותה גרסה.</p>
+    </section>
+
+    <section class="options" aria-label="בחירת גרסה">
+      <a class="card light" href="memorial-single-light-ffc526-github/index.html">
+        <div>
+          <div class="num">01</div>
+          <div class="preview" aria-hidden="true"></div>
+          <h2 class="title">צהוב בהיר</h2>
+          <p class="desc">הגרסה הבהירה יותר של הצבע, רכה ועדינה יותר על שלוש הקופסאות והפופ־אפים.</p>
+        </div>
+        <span class="cta">פתיחת הגרסה</span>
+      </a>
+
+      <a class="card mid" href="memorial-single-mid-ffc526-github/index.html">
+        <div>
+          <div class="num">02</div>
+          <div class="preview" aria-hidden="true"></div>
+          <h2 class="title">צהוב ביניים</h2>
+          <p class="desc">הגרסה שבין הצהוב המקורי לגרסה הבהירה, עם נוכחות קצת יותר חמה.</p>
+        </div>
+        <span class="cta">פתיחת הגרסה</span>
+      </a>
+    </section>
+
+    <div class="note">
+      העלי את הקובץ הזה בשם <strong>index.html</strong> לשורש הריפוזיטורי, באותו מקום שבו נמצאות שתי התיקיות שבתמונה.
+    </div>
+  </main>
+</body>
+</html>
